@@ -98,7 +98,8 @@ public class App {
 	public static void main(String[] args) {
 
 		int[] a = { 7, 2, 9, 8, 5, 6,7,4,9,1,0 };
-		new App().mergeSort(a, 0, a.length-1);
+		new App().mergeSort(a, 0, a.length-1
+				);
 
 		for (int i = 0; i < a.length; i++) {
 			System.out.print(a[i]);
