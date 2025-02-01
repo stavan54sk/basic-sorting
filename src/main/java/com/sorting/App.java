@@ -56,10 +56,49 @@ public class App {
 
 	}
 
+	void mergeSort(int[] a, int s, int e) {
+		if (s == e)
+			return;
+		int mid = s + (e - s) / 2;
+		mergeSort(a, s, mid);
+		mergeSort(a, mid + 1, e);
+		merge(a, s, mid, e);
+
+	}
+
+	void merge(int[] a, int s, int m, int e) {
+
+		int[] temp = new int[(e - s + 1)];
+		int k = 0;
+		int i = s;
+		int j = m + 1;
+		while (i <= m && j <= e) {
+			if (a[i] < a[j]) {
+				temp[k++] = a[i++];
+			} else {
+				temp[k++] = a[j++];
+			}
+		}
+
+		while (i <= m) {
+			temp[k++] = a[i++];
+		}
+
+		while (j <= e) {
+
+			temp[k++] = a[j++];
+		}
+
+		for (int l = 0; l < temp.length; l++) {
+			a[s + l] = temp[l];
+		}
+
+	}
+
 	public static void main(String[] args) {
 
-		int[] a = { 5, 6, 7, 2, 9, 8 };
-		new App().insertionSort(a, 6);
+		int[] a = { 7, 2, 9, 8, 5, 6,7,4,9,1,0 };
+		new App().mergeSort(a, 0, a.length-1);
 
 		for (int i = 0; i < a.length; i++) {
 			System.out.print(a[i]);
