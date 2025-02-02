@@ -66,7 +66,7 @@ public class App {
 
 	}
 
-	void merge(int[] a, int s, int m, int e) {
+	private void merge(int[] a, int s, int m, int e) {
 
 		int[] temp = new int[(e - s + 1)];
 		int k = 0;
@@ -94,15 +94,47 @@ public class App {
 		}
 
 	}
+	
+	
+	void quickSort(int a[],int s,int e){
+		if(s>=e){
+			return;
+		}
+		int pi=partition(a,s,e);
+		quickSort(a,s,pi-1);
+		quickSort(a,pi,e);
+	}
+	
+
+	private int partition(int a[],int s, int e) {
+		// TODO Auto-generated method stub
+		int i=s;
+		int j=s-1;
+		int pivot=a[e];
+		while(i<e) {
+			if(a[i] < pivot) {
+				j++;
+				int temp=a[j];
+				a[j]=a[i];
+				a[i]=temp;
+			}
+			i++;
+		}
+		j++;
+		int temp=a[j];
+		a[j]=pivot;
+		a[e]=temp;
+		return j;
+	}
 
 	public static void main(String[] args) {
 
-		int[] a = { 7, 2, 9, 8, 5, 6,7,4,9,1,0 };
-		new App().mergeSort(a, 0, a.length-1
+		int[] a = { 7, 2, 9,10,54,0,5 };
+		new App().quickSort(a, 0, a.length-1
 				);
 
 		for (int i = 0; i < a.length; i++) {
-			System.out.print(a[i]);
+			System.out.print(a[i]+" ");
 		}
 	}
 
